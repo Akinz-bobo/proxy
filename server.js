@@ -4,7 +4,11 @@ const cors = require("cors");
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://www.matthysenbv.be",
+  })
+);
 
 let headersList = {
   Accept: "*/*",
@@ -64,11 +68,12 @@ app.post("/server", async (req, res) => {
   };
 
   try {
-    let response = await axios.request(reqOptions);
-    res.status(201).json({
-      message: "success",
-      response: response.data,
-    });
+    console.log(req.body);
+    // let response = await axios.request(reqOptions);
+    // res.status(201).json({
+    //   message: "success",
+    //   response: response.data,
+    // });
   } catch (error) {
     console.log(error);
   }
