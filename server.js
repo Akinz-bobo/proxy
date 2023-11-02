@@ -30,8 +30,6 @@ app.get("/", async (req, res) => {
 });
 
 app.post("/server", async (req, res) => {
-  console.log(req.body);
-
   const data = {
     name: req.body["Voornaam-achternaam"],
     email: req.body["Emailadres"],
@@ -68,7 +66,6 @@ app.post("/server", async (req, res) => {
   };
 
   try {
-    console.log(req.body);
     // let response = await axios.request(reqOptions);
     // res.status(201).json({
     //   message: "success",
