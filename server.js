@@ -66,11 +66,11 @@ app.post("/server", async (req, res) => {
   };
 
   try {
-    // let response = await axios.request(reqOptions);
-    // res.status(201).json({
-    //   message: "success",
-    //   response: response.data,
-    // });
+    let response = await axios.request(reqOptions);
+    res.status(201).json({
+      message: "success",
+      response: response.data,
+    });
   } catch (error) {
     console.log(error);
   }
