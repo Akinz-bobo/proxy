@@ -66,7 +66,7 @@ app.post("/server", async (req, res) => {
   try {
     let response = await axios.request(reqOptions);
     console.log("after!");
-    res.status(201).json({
+    return res.status(201).json({
       message: "success",
       response: response.data,
     });
