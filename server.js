@@ -3,6 +3,7 @@ const axios = require("axios");
 const cors = require("cors");
 
 const app = express();
+app.options("*", cors());
 app.use(express.json());
 app.use(
   cors({
@@ -65,8 +66,10 @@ app.post("/server", async (req, res) => {
     data,
   };
 
+  console.log("before!");
   try {
     let response = await axios.request(reqOptions);
+    console.log("after!");
     res.status(201).json({
       message: "success",
       response: response.data,
@@ -77,5 +80,5 @@ app.post("/server", async (req, res) => {
 });
 
 app.listen(3000, () => {
-  console.log("Example app listening on port 3000!");
+  console.log("app listening on port 3000!");
 });
