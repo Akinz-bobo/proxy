@@ -5,11 +5,7 @@ const cors = require("cors");
 const app = express();
 app.options("*", cors());
 app.use(express.json());
-app.use(
-  cors({
-    origin: "https://www.matthysenbv.be",
-  })
-);
+app.use(cors());
 
 let headersList = {
   Accept: "*/*",
