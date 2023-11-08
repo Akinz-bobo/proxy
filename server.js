@@ -28,7 +28,6 @@ app.get("/", async (req, res) => {
 });
 
 app.post("/server", async (req, res) => {
-  console.log(req.body);
   const data = {
     name: req.body["Voornaam-achternaam"],
     email: req.body["Emailadres"],
