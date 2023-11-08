@@ -23,10 +23,12 @@ app.get("/", async (req, res) => {
 
   let response = await axios.request(reqOptions);
 
+  console.log(response.data);
   res.send("Hello World!");
 });
 
 app.post("/server", async (req, res) => {
+  console.log(req.body);
   const data = {
     name: req.body["Voornaam-achternaam"],
     email: req.body["Emailadres"],
@@ -66,9 +68,18 @@ app.post("/server", async (req, res) => {
   try {
     let response = await axios.request(reqOptions);
     console.log("after!");
+    let reqOptions2 = {
+      url: `https://app.robaws.com/api/v2/clients/${response.data.id}/comments`,
+      method: "POST",
+      headers: headersList,
+      data: {
+        content: req.body["Bericht"],
+      },
+    };
+    let newreq = await axios.request(reqOptions2);
     return res.status(201).json({
       message: "success",
-      response: response.data,
+      response: { ...response.data, ...newreq.data },
     });
   } catch (error) {
     console.log(error);
